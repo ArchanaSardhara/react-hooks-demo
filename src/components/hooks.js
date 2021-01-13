@@ -27,8 +27,8 @@ const Hooks = (props) => {
   }
 
   return (
-    <div>
-      <Card>
+    <div className="h-100">
+      <Card className="h-100">
         <Card.Header>
           <div className="d-flex justify-content-between">
             <div className="d-flex align-items-center">

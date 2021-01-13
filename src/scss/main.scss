@@ -1,4 +1,8 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
+html, body, #root {
+    min-height: 100% !important;
+    height: 100%;
+}
 
 .back-icon{
     display: inline-block;
