@@ -11,13 +11,12 @@ const UseEffectComponent = () => {
   }, [render])
 
   useEffect(() => {
-    if (render && color && window.confirm(`Are you sure you want to set new color? \nColor:${color}`)) {
+    const confirmMsg = color ?
+      `Are you sure you want to set new color? \nColor:${color}`
+      : 'Are you sure you want to remove color?';
+
+    if (render && window.confirm(confirmMsg)) {
       divRef.current.style.backgroundColor = color;
-    }
-    if (!color) {
-      if (window.confirm('Are you sure you want to remove color?')) {
-        divRef.current.style.backgroundColor = color;
-      }
     }
   }, [color])
 
@@ -46,4 +45,3 @@ const UseEffectComponent = () => {
 }
 
 export default UseEffectComponent;
-// // 2121

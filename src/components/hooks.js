@@ -36,10 +36,10 @@ const Hooks = (props) => {
             </div>
             <div className="d-flex align-items-center">
               <Button variant="info" className="mx-2 my-1 d-flex align-items-center" onClick={() => redirectToHook(null)}>
-                <span className="back-icon">&#10158;</span> Back
+                <span className="button-icon">&#10158;</span> Back
               </Button>
               <Button variant="info" className="mx-2 my-1 d-flex align-items-center" onClick={() => redirectToHook(ActiveHook)}>
-                <span className="back-icon">&#8635;</span>  Refresh
+                <span className="button-icon">&#8635;</span>  Refresh
           </Button>
             </div>
           </div>

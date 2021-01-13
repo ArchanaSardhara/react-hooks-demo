@@ -13,7 +13,7 @@ const Home = (props) => {
     <Container fluid>
       <Row>
         {HOOKLIST.map((hook, index) => (
-          <Col md={4} sm={6} key={index}>
+          <Col lg={4} md={6} sm={6} key={index}>
             <Card className="m-3 text-center bg-light" onClick={() => redirectToHook(hook)}>
               <Card.Body className="my-5">
                 <h5>{hook.title}</h5>
