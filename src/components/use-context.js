@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 
 import { AppContext } from "./context";
 
 const UseContextComponent = () => {
+  const [count, setCount] = useState(5);
   const context = useContext(AppContext);
-  console.log('context', context)
   return (
     <div>
       <div className="border border-info p-3">
@@ -14,7 +14,7 @@ const UseContextComponent = () => {
           {JSON.stringify(context, null, 2)}
         </pre>
       </div>
-      <AppContext.Provider value={{ count: 5 }}>
+      <AppContext.Provider value={{ count, setCount }}>
         <UseContextWithProvider />
       </AppContext.Provider>
       <UseContextWithoutProvider />
@@ -40,9 +40,10 @@ const UseContextWithProvider = () => {
     <div className="border border-info text-center p-5 my-4">
       <p className="font-weight-bold">
         useContext with context provider<br />
-        <span className="font-weight-normal">provider has value: {`{ value: 5 }`}</span><br />
+        <span className="font-weight-normal">provider has value: {`{ value: ${context.count} }`}</span><br />
         <small>Count: {context.count}</small>
       </p>
+      <input className="text-center" type="number" value={context.count} onChange={e => context.setCount(e.target.value)} />
       <Row>
         <Col>
           <UseContextWithProviderChild />
