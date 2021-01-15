@@ -3,22 +3,22 @@ import { Form } from "react-bootstrap";
 
 const UseEffectComponent = () => {
   const divRef = useRef();
-  const [render, setRender] = useState(false);
+  const [rendered, setRendered] = useState(false);
   const [color, setColor] = useState("");
 
   useEffect(() => {
-    if (!render) { setRender(true); }
-  }, [render])
+    if (!rendered) { setRendered(true); }
+  }, [rendered])
 
   useEffect(() => {
     const confirmMsg = color ?
       `Are you sure you want to set new color? \nColor:${color}`
       : 'Are you sure you want to remove color?';
 
-    if (render && window.confirm(confirmMsg)) {
+    if (rendered && window.confirm(confirmMsg)) {
       divRef.current.style.backgroundColor = color;
     }
-  }, [color])
+  }, [color, rendered])
 
   return <div className="m-5 p-5 border border-info bg-light">
     <Form className="my-3">

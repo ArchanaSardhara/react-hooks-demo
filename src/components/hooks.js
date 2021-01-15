@@ -11,7 +11,7 @@ const Hooks = (props) => {
   useEffect(() => {
     const _hook = HOOKLIST.find(h => `:${h.name}` === hook);
     setActiveHook(_hook);
-  }, [ActiveHook])
+  }, [ActiveHook, hook])
 
   const redirectToHook = (data) => {
     if (data) {
@@ -21,7 +21,7 @@ const Hooks = (props) => {
       props.history.push('/')
     }
   }
-  
+
   if (!ActiveHook) {
     return <div>Loading...</div>
   }
