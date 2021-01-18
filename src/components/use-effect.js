@@ -18,7 +18,7 @@ const UseEffectComponent = () => {
     if (rendered && window.confirm(confirmMsg)) {
       divRef.current.style.backgroundColor = color;
     }
-  }, [color, rendered])
+  }, [color])
 
   return <div className="m-5 p-5 border border-info bg-light">
     <Form className="my-3">

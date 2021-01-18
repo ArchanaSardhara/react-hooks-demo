@@ -11,7 +11,7 @@ const Hooks = (props) => {
   useEffect(() => {
     const _hook = HOOKLIST.find(h => `:${h.name}` === hook);
     setActiveHook(_hook);
-  }, [ActiveHook, hook])
+  }, [ActiveHook])
 
   const redirectToHook = (data) => {
     if (data) {
