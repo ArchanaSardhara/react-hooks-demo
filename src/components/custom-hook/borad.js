@@ -50,44 +50,48 @@ const Borad = ({ activeUser, nextUser, togglePlayer }) => {
     })
   }
 
+  const activeCellClick = (index) => {
+    if (!isGameOver) {
+      let blockStateClone = [...blockState];
+      let selectedCellClone = [...selectedCell];
+      blockStateClone[index - 1] = activeUser.userSign;
+      setBlockState(blockStateClone);
+      setDisplayBlockState({ array: blockStateClone, index: displayBlockState.index + 1 });
+      selectedCellClone.push(index - 1);
+      setSelectedCell(selectedCellClone);
+      togglePlayer();
+    }
+  }
+
   return (<div>
     <h1 className="text-center text-info my-5">Borad</h1>
-    { !isGameOver ? (
-      <div className="d-flex align-items-center flex-wrap m-5">
-        <Button variant="outline-info" className="m-4" disabled={selectedCell.length < 1} onClick={() => prevStep()}>{"<"}</Button>
-        <div>
-          {blockPattern.map((b, i) => {
-            return <div key={i} className="d-flex">
-              {b.map((index, j) => {
-                return (
-                  <Block
-                    key={j}
-                    selectedSign={displayBlockState.array[index - 1]}
-                    onClickCell={() => {
-                      let blockStateClone = [...blockState];
-                      let selectedCellClone = [...selectedCell];
-                      blockStateClone[index - 1] = activeUser.userSign;
-                      setBlockState(blockStateClone);
-                      setDisplayBlockState({ array: blockStateClone, index: displayBlockState.index + 1 });
-                      selectedCellClone.push(index - 1);
-                      setSelectedCell(selectedCellClone);
-                      togglePlayer();
-                    }}
-                  />
-                )
-              }
-              )}
-            </div>
-          })}
-        </div>
-        <Button variant="outline-info" className="m-4" disabled={selectedCell.length === 0 || selectedCell.length === displayBlockState.index} onClick={() => nextStep()}>{">"}</Button>
+
+    <div className="d-flex align-items-center flex-wrap m-5">
+      <Button variant="outline-info" className="m-4" disabled={selectedCell.length === 0 || displayBlockState.index === 0} onClick={() => prevStep()}>{"<"}</Button>
+      <div>
+        {blockPattern.map((b, i) => {
+          return <div key={i} className="d-flex">
+            {b.map((index, j) => {
+              return (
+                <Block
+                  key={j}
+                  selectedSign={displayBlockState.array[index - 1]}
+                  onClickCell={() => activeCellClick(index)}
+                />
+              )
+            }
+            )}
+          </div>
+        })}
       </div>
-    ) : (
-        <div className="d-flex flex-column justify-content-center align-items-center p-5">
-          <h4 className="text-center">{msg}</h4>
-          <Button variant="info" className="mt-5" onClick={() => restartGame()}>Restart Game</Button>
-        </div>
-      )}
+      <Button variant="outline-info" className="m-4" disabled={selectedCell.length === 0 || selectedCell.length === displayBlockState.index} onClick={() => nextStep()}>{">"}</Button>
+    </div>
+    { isGameOver ? (
+      <div className="d-flex flex-column justify-content-center align-items-center p-5">
+        <h4 className="text-center">{msg}</h4>
+        <Button variant="info" className="mt-5" onClick={() => restartGame()}>Restart Game</Button>
+      </div>
+    ) : null}
   </div>)
 }
 
