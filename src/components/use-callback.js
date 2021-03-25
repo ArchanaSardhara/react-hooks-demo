@@ -27,7 +27,7 @@ const UseCallbackComponent = () => {
       <ul>
         <li>When parent compoent rerender every time new method for incement counter will created.</li>
         <li>When we wrap methods with callback it will create only when denpending value gets update</li>
-        <li>So button compoent (passed method as props) of without callback will rerender every time when parent component updates state because the new method is created each time.</li>
+        <li>So button compoent (passed method as props) wrapped without callback will rerender every time when parent component updates state because the new method is created each time.</li>
       </ul>
       <div className="d-flex justify-content-center flex-column align-items-center">
         <div className="border-bottom w-100 m-4"></div>
@@ -41,12 +41,13 @@ const UseCallbackComponent = () => {
   )
 }
 
-const ButtonComp = React.memo(({ text, handleClick, name, type }) => {
-  console.log('render button component :: ', name)
+const ButtonComp = React.memo(({ text, handleClick, type }) => {
+
   useEffect(() => {
     if (type === "callback") buttonWithCallback += 1;
     if (type === "no-callback") buttonWithoutCallback += 1;
   })
+
   return (
     <div className="text-center">
       <Button className="m-2" variant="outline-info" onClick={handleClick}>{text}</Button><br />

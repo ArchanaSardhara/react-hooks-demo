@@ -11,6 +11,7 @@ const Hooks = (props) => {
   useEffect(() => {
     const _hook = HOOKLIST.find(h => `:${h.name}` === hook);
     setActiveHook(_hook);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ActiveHook])
 
   const redirectToHook = (data) => {

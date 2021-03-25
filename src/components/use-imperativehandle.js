@@ -29,7 +29,7 @@ const UseImperativeHandleChild = React.forwardRef((props, ref) => {
   const [count, updateConut] = useState(0);
 
   useImperativeHandle(ref, () => ({
-    setCount
+    setCount,
   }));
 
   const setCount = (offset) => {

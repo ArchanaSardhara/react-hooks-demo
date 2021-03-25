@@ -1,3 +1,4 @@
+import CustomHook from "./custom-hook";
 import UseCallbackComponent from "./use-callback";
 import UseContextComponent from "./use-context";
 import UseDebugValueComponent from "./use-debugvalue";
@@ -70,6 +71,11 @@ export const HOOKLIST = [
     name: USE_STATE,
     title: "Use State",
     Component: UseStateComponent
+  },
+  {
+    name: "custom hooks",
+    title: "Custom hooks",
+    Component: CustomHook
   }
 ];
 
