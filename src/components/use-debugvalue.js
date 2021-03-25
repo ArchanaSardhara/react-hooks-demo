@@ -26,7 +26,7 @@ const UseDebugValueComponent = () => {
 
 const User = ({ user }) => {
   const [data, setUser] = useState(user);
-  const userstatus = useStatus(data);
+  useStatus(data);
 
   return <div className="m-3 p-3 bg-light border border-info d-flex justify-content-between">
     <div>
